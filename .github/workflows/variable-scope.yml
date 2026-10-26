@@ -7,6 +7,7 @@ env:
 
 jobs:
   job1:
+    runs-on: ubuntu-latest
     env:
       JOB_VAR: "only in job1"
     steps:
@@ -14,6 +15,7 @@ jobs:
       - run: echo "Job1 specific: $JOB_VAR"
 
   job2:
+    runs-on: ubuntu-latest
     steps:
       - run: echo "Global: $GLOBAL_VAR"
       - run: echo "Job2 sees job1 var? $JOB_VAR (should be empty)"
