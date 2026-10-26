@@ -1,0 +1,22 @@
+name: Multi-Environment Testing
+
+on: push
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        environment: [dev, staging, prod]
+        python-version: [3.10, 3.11]
+
+    env:
+      ENV: ${{ matrix.environment }}
+      PYTHON_VERSION: ${{ matrix.python-version }}
+
+    steps:
+      - name: Show Configuration
+        run: |
+          echo "Testing with:"
+          echo "  Environment: $ENV"
+          echo "  Python: $PYTHON_VERSION"
